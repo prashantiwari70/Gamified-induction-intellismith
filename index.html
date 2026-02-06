@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gamified Induction – Intellismith</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>Gamified Induction Journey</h1>
+  <p>Welcome to Intellismith</p>
+  <p class="story">
+  You have joined Intellismith as a new professional. Complete each mission to
+  unlock your induction journey.
+</p>
+
+
+  <div id="stats">⭐ Points: <span id="points">0</span></div>
+
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <button onclick="resetJourney()" class="reset-btn">
+  🔄 Start Fresh
+</button>
+
+</header>
+
+<main class="app-container">
+
+  
+  <section class="level active" id="level-1">
+    <h2>Mission 1: Company Journey</h2>
+    <p>Arrange the milestones in correct order</p>
+
+    <div class="timeline">
+      <div class="timeline-item" draggable="true" data-order="1">Founded</div>
+      <div class="timeline-item" draggable="true" data-order="2">Technology Expansion</div>
+      <div class="timeline-item" draggable="true" data-order="3">L&D Platform Launch</div>
+    </div>
+
+    <button id="level1-next" disabled onclick="completeLevel(1)">Next Level</button>
+  </section>
+
+  <!-- LEVEL 2 : MATCHING GAME -->
+  <section class="level" id="level-2">
+  <h2>Mission 2: Match the Technology</h2>
+
+  <div class="match-container">
+    <p id="branch-feedback"></p>
+
+    <div class="match-column">
+      <button class="left" data-value="cloud" onclick="selectLeft(this)">Cloud</button>
+      <button class="left" data-value="ai" onclick="selectLeft(this)">AI</button>
+    </div>
+
+    <div class="match-column">
+      <button class="right" data-value="cloud" onclick="selectRight(this)">
+        Scalable Infrastructure
+      </button>
+      <button class="right" data-value="ai" onclick="selectRight(this)">
+        Smart Automation
+      </button>
+    </div>
+  </div>
+
+  <button id="level2-next" disabled onclick="completeLevel(2)">
+    Next Level
+  </button>
+</section>
+
+
+  
+  <section class="level" id="level-3">
+    <h2>Mission 3: Quiz Battle</h2>
+    <p id="quiz-question"></p>
+    <button onclick="answerQuiz(true)">True</button>
+    <button onclick="answerQuiz(false)">False</button>
+  </section>
+
+  
+  <section class="level" id="level-4">
+  <h2 id="final-title">Final Timed Challenge</h2>
+
+  <div id="final-quiz">
+    <p id="timer">Time Left: 30s</p>
+    <p>Is Intellismith focused on technology & learning?</p>
+
+    <button onclick="submitFinal(true)">Yes</button>
+    <button onclick="submitFinal(false)">No</button>
+  </div>
+
+  
+  <div id="final-complete" style="display:none;">
+    <h2>🎉 Game Completed!</h2>
+    <p>You have successfully completed the Gamified Induction Journey.</p>
+  </div>
+
+  
+  <div class="badges-inline">
+    <h3>🏅 Badges Earned</h3>
+    <ul id="badges-list"></ul>
+  </div>
+</section>
+
+
+</main>
+
+
+
+<script src="scorm.js"></script>
+<script src="script.js"></script>
+<script>initSCORM();</script>
+
+
+<div id="feedback-modal" class="modal hidden">
+  <div class="modal-content">
+    <p id="modal-message"></p>
+    <button onclick="closeModal()">OK</button>
+  </div>
+</div>
+     
+
+</body>
+</html>
